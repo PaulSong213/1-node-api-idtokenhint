@@ -1,0 +1,314 @@
+﻿<!DOCTYPE html>
+<!-- Copyright (c) Microsoft Corporation. All rights reserved.
+     Licensed under the MIT License. -->
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>E. Zarate Hospital Verifier</title>
+    <meta name="description" content="Verified Credentials Expert">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Microsoft">
+    <link rel="icon" href="favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+
+<body>
+    <div id="wrap">
+
+        <nav class="flex md:hidden bg-white border-gray-200 pt-8 pb-2.5 dark:bg-gray-900 px-3">
+            <div class="flex flex-wrap items-center justify-between max-w-screen-xl w-full  mx-auto">
+                <a href="#" class="flex items-center">
+                    <img src="favicon.png" class="h-6 mr-3 sm:h-9" alt="E. Zarate Hospital Logo" />
+                    <span
+                        class="self-center my-auto text-gray-800 text-md font-semibold whitespace-nowrap dark:text-white">
+                        E. Zarate Hospital
+                    </span>
+                </a>
+                <div class="flex">
+                    <a href="/verifier.html"
+                        class="hidden md:block self-center my-auto text-sky-800 text-md font-semibold whitespace-nowrap dark:text-white">
+                        Verify a Credential
+                    </a>
+                    <a href="/verifier.html#how-it-works"
+                        class="self-center my-auto text-sky-800 text-md font-semibold whitespace-nowrap dark:text-white">
+                        How this works?
+                    </a>
+                </div>
+            </div>
+        </nav>
+
+        <nav id="sideBar" class="fixed  hidden md:flex h-screen flex-col justify-center flex-shrink-0 w-0 sm:w-3/12">
+            <a href="#" class="flex items-center fixed top-14 left-3 lg:left-5 xl:left-10">
+                <img src="favicon.png" class="h-6 mr-3 sm:h-9" alt="E. Zarate Hospital Logo" />
+                <span
+                    class="self-center my-auto text-zinc-500 text-md lg:text-xl font-semibold whitespace-nowrap dark:text-white">
+                    E. Zarate Hospital
+                </span>
+            </a>
+            <div
+                class="fixed top-1/3 flex flex-col space-y-2 border-l-2 border-zinc-400 h-max left-8 xl:left-16 pl-3 py-1">
+                <a href="#topSection"
+                    class="my-auto  text-sky-800 text-lg lg:text-xl font-bold whitespace-nowrap dark:text-white">
+                    Claim Issuance
+                </a>
+                <a href="/verifier.html"
+                    class="my-auto text-zinc-500 hover:text-sky-800 text-lg lg:text-xl font-semibold whitespace-nowrap dark:text-white">
+                    Verify a Credential
+                </a>
+                <a href="/verifier.html#more-info"
+                    class="my-auto text-zinc-500 hover:text-sky-800 text-lg lg:text-xl font-semibold whitespace-nowrap dark:text-white">
+                    How this works?
+                </a>
+            </div>
+            <img src="images/triangles-top.svg" class="fixed top-0 right-8 h-20" />
+            <img src="images/triangles-left.svg" class="fixed bottom-12 left-0 w-24" />
+        </nav>
+
+        <main class="flex-grow w-full md:w-9/12 ml-auto" id="topSection">
+            <!-- Start block -->
+            <section id="mobileSection" class="pt-20 md:pt-10 flex flex-col  md:justify-center "
+                style="min-height: 90vh;">
+                <div class="grid max-w-screen-xl px-4 pb-8 mx-auto lg:gap-8 xl:gap-0  lg:grid-cols-12 pt-14">
+                    <div class="mr-auto place-self-center lg:col-span-7 flex flex-col space-y-7">
+                        <div class="max-w-2xl mx-auto">
+                            <svg class="animate-spin h-24 w-24 mr-3 rounded-full border-8 border-x-sky-950 border-t-sky-950 mx-auto block"
+                                viewBox="0 0 24 24">
+                                <!-- ... -->
+                            </svg>
+                        </div>
+                        <h1
+                            class="text-center max-w-2xl -mt-6 mb-4 text-5xl font-extrabold leading-none md:4xl lg:text-5xl xl:text-6xl dark:text-white text-zinc-800">
+                            <span class="text-sky-900">Verifying</span> <br /> Please wait...
+                        </h1>
+
+                    </div>
+                </div>
+            </section>
+            <!-- End block -->
+
+            <!-- Desktop Instruction block -->
+            <!-- Start block -->
+            <section id="desktopSection" class=" dark:bg-gray-800 hidden">
+                <div class="px-4 py-8 mx-auto space-y-12 lg:space-y-20 lg:py-24 lg:px-6 flex">
+                    <!-- Row -->
+                    <div id="more-info" class="items-center w-8/12">
+                        <div class="text-gray-500 sm:text-lg dark:text-gray-400">
+                            <h2 class="mb-4 text-5xl font-extrabold text-gray-900 dark:text-white">
+                                <span class="text-sky-950 fw-bold">Scan the QR Code</span>
+                                <br>
+                                <span class="text-3xl">To Claim your Medical Certificate Verification ID</span>
+                            </h2>
+                            <!-- List -->
+                            <ul role="list" class="pt-8 space-y-5 border-t border-gray-200 my-7 dark:border-gray-700">
+                                <span class="text-zinc-700 font-bold">3 Easy Steps</span>
+                                <li class="flex space-x-3">
+                                    <div
+                                        class=" bg-sky-900 rounded-full flex-shrink-0 text-white font-bold text-sm p-2 h-7 w-7 flex">
+                                        <span class="block mx-auto -mt-1">1</span>
+                                    </div>
+                                    <span
+                                        class="my-auto text-md font-medium leading-tight text-gray-900 dark:text-white">
+                                        Open QR Code Scanner on your mobile device
+                                    </span>
+                                </li>
+
+                                <li class="flex space-x-3">
+                                    <div
+                                        class=" bg-sky-900 rounded-full flex-shrink-0 text-white font-bold text-sm p-2 h-7 w-7 flex">
+                                        <span class="block mx-auto -mt-1">2</span>
+                                    </div>
+                                    <span
+                                        class="my-auto text-md font-medium leading-tight text-gray-900 dark:text-white">
+                                        It will open the Microsoft Authenticator App (if installed or it will prompt you
+                                        to download)
+                                    </span>
+                                </li>
+
+                                <li class="flex space-x-3">
+                                    <div
+                                        class=" bg-sky-900 rounded-full flex-shrink-0 text-white font-bold text-sm p-2 h-7 w-7 flex">
+                                        <span class="block mx-auto -mt-1">3</span>
+                                    </div>
+                                    <span
+                                        class="my-auto text-md font-medium leading-tight text-gray-900 dark:text-white">
+                                        Lastly, verify SMS OTP and claim your Medical Certificate Verification ID
+                                    </span>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="w-4/12">
+                        <div class="flex flex-col justify-center">
+                            <svg id="qr-loader"
+                                class="animate-spin mx-auto h-16 w-16 block  rounded-full border-4 border-x-sky-950 border-t-sky-950"
+                                viewBox="0 0 24 24">
+                            </svg>
+                            <div id="qrcode" style="text-align: center" class="m-auto block"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- End block -->
+        </main>
+
+        <div class="hidden" style="text-align: center;">
+            <img id="logo" src="VerifiedCredentialExpert-icon.png" height=200px; />
+            <h1 id="idTitle">Verifiable Credential Issuance</h1>
+            <h2 id="idSubTitle"></h2>
+
+            <button type="button" id="sign-in" class="button">GET CREDENTIAL</button>
+            <div id="qrText" style="display:none;">
+                <p class="small-text">
+                    <img src="authenticator-icon.png" alt="Authenticator icon" class="icon-small"><br>
+                    Scan with Microsoft Authenticator or Custom Wallet
+                </p>
+            </div>
+            <a id="deeplink" style="display: none;margin-top: 10px;">Tap to open Authenticator on mobile</a>
+
+            <div id="pinCodeText" style="display: none"></div>
+
+            <div id="message-wrapper" class="margin-bottom-75 margin-top-75" style="display: none">
+                <i class="fas fa-user-check green icon-text-large margin-bottom-25"></i>
+                <div id="message"></div>
+                <br />
+                <div id="payload"></div>
+            </div>
+
+            <script src="qrcode.min.js"></script>
+            <script>
+                var signIn = document.getElementById('sign-in');
+                var signOut = document.getElementById('sign-out');
+                var display = document.getElementById('display');
+                var qrcode = new QRCode("qrcode", { width: 200, height: 200 });
+                var respIssuanceReq = null;
+                signIn.addEventListener('click', () => {
+                    const urlParams = new URLSearchParams(window.location.search);
+                    const claimBlockchainAddress = urlParams.get('claimBlockchainAddress');
+                    const claimDocumentHash = urlParams.get('claimDocumentHash');
+                    const claimDisplayName = urlParams.get('claimDisplayName');
+                    // console.log(`claimBlockchainAddress: ${claimBlockchainAddress}`);
+                    // console.log(`claimDocumentHash: ${claimDocumentHash}`);
+                    if (!claimBlockchainAddress || !claimDocumentHash) {
+                        console.error("Missing claimBlockchainAddress or claimDocumentHash in URL");
+                        displayMessage("Missing claimBlockchainAddress or claimDocumentHash in URL");
+                        return;
+                    }
+                    fetch(`/api/issuer/issuance-request?claimBlockchainAddress=${claimBlockchainAddress}&claimDocumentHash=${claimDocumentHash}&claimDisplayName=${claimDisplayName}`)
+                        .then(function (response) {
+                            response.text()
+                                .catch(error => displayMessage(error))
+                                .then(function (message) {
+                                    respIssuanceReq = JSON.parse(message);
+                                    if (/Android/i.test(navigator.userAgent)) {
+                                        console.log(`Android device! Using deep link (${respIssuanceReq.url}).`);
+                                        window.location.href = respIssuanceReq.url; setTimeout(function () {
+                                            window.location.href = "https://play.google.com/store/apps/details?id=com.azure.authenticator";
+                                        }, 2000);
+                                    } else if (/iPhone/i.test(navigator.userAgent)) {
+                                        console.log(`iOS device! Using deep link (${respIssuanceReq.url}).`);
+                                        window.location.replace(respIssuanceReq.url);
+                                    } else {
+                                        document.getElementById("desktopSection").style.display = "block";
+                                        document.getElementById("mobileSection").style.display = "none";
+                                        if (response.status > 299) {
+                                            displayMessage(message);
+                                        } else {
+                                            document.getElementById("qr-loader").style.display = "none";
+                                            console.log(`Not Android or IOS. Generating QR code encoded with ${message}`);
+                                            qrcode.makeCode(respIssuanceReq.url);
+                                            console.log(respIssuanceReq);
+                                            document.getElementById('sign-in').style.display = "none";
+                                            document.getElementById('qrText').style.display = "block";
+                                            if (respIssuanceReq.pin) {
+                                                document.getElementById('pinCodeText').innerHTML = "Pin code: " + respIssuanceReq.pin;
+                                                document.getElementById('pinCodeText').style.display = "block";
+                                            }
+                                            checkIssuanceResponse();
+                                        }
+                                    }
+                                }).catch(error => { console.log(error.message); })
+                        }).catch(error => { console.log(error.message); })
+                });
+
+                function displayMessage(msg) {
+                    document.getElementById('message-wrapper').style.display = "block";
+                    document.getElementById("message").innerHTML = msg;
+                }
+
+                function checkIssuanceResponse() {
+                    var checkStatus = setInterval(function () {
+                        fetch('api/issuer/issuance-response?id=' + respIssuanceReq.id)
+                            .then(response => response.text())
+                            .catch(error => displayMessage(error))
+                            .then(response => {
+                                if (response.length > 0) {
+                                    console.log(response)
+                                    respMsg = JSON.parse(response);
+                                    // QR Code scanned, show pincode if pincode is required
+                                    if (respMsg.status == 'request_retrieved') {
+                                        document.getElementById("qrcode").getElementsByTagName("img")[0].style.opacity = "0.1";
+                                        document.getElementById('qrText').style.display = "none";
+                                        if (respMsg.pin) {
+                                            document.getElementById('pinCodeText').style.display = "visible";
+                                        }
+                                        displayMessage(respMsg.message);
+                                    }
+                                    if (respMsg.status == 'issuance_successful') {
+                                        document.getElementById('qrcode').style.display = "none";
+                                        document.getElementById('pinCodeText').style.display = "none";
+                                        document.getElementById('message').innerHTML = respMsg.message;
+                                        clearInterval(checkStatus);
+                                    }
+                                    if (respMsg.status == 'issuance_error') {
+                                        document.getElementById('qrcode').style.display = "none";
+                                        document.getElementById('pinCodeText').style.display = "none";
+                                        document.getElementById('message').innerHTML = "Issuance error occurred, did you enter the wrong pincode? Please refresh the page and try again.";
+                                        document.getElementById('payload').innerHTML = "Payload: " + respMsg.payload;
+                                        clearInterval(checkStatus);
+                                    }
+                                }
+                            })
+                    }, 2500);
+                }
+
+                fetch('api/issuer/get-manifest')
+                    .then(function (response) {
+                        response.text()
+                            .catch(error => displayMessage(error))
+                            .then(function (message) {
+                                var manifest = JSON.parse(message);
+                                document.getElementById('idTitle').innerHTML = "Issuance of " + manifest.display.card.title + " by " + manifest.display.card.issuedBy;
+                                document.getElementById('idSubTitle').innerHTML = manifest.display.card.description;
+                                document.getElementById('logo').src = manifest.display.card.logo.uri;
+                            }).catch(error => { console.log(error.message); })
+                    }).catch(error => { console.log(error.message); })
+
+                function parseParms(str) {
+                    var pieces = str.split("&"), data = {}, i, parts;
+                    for (i = 0; i < pieces.length; i++) {
+                        parts = pieces[i].split("=");
+                        if (parts.length < 2) {
+                            parts.push("");
+                        }
+                        data[decodeURIComponent(parts[0])] = decodeURIComponent(parts[1]);
+                    }
+                    return data;
+                }
+
+                window.onload = function () {
+                    var autoclick = parseParms(document.location.search.substring(1)).autoclick;
+                    if (autoclick) {
+                        document.getElementById('sign-in').click();
+                    }
+                }
+
+            </script>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<!-- Copyright (c) Microsoft Corporation. All rights reserved.
+     Licensed under the MIT License. -->
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>E. Zarate Hospital Verifier</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Verified Credentials Expert">
+    <meta name="author" content="Microsoft">
+    <link rel="icon" href="favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+
+<body>
+    <header class="fixed w-full z-20 md:hidden">
+        <nav class="bg-white border-gray-200 pt-8 px-4 pb-2.5 dark:bg-gray-900">
+            <div class="flex flex-wrap items-center justify-between max-w-screen-xl px-4 mx-auto">
+                <a href="#" class="flex items-center">
+                    <img src="favicon.png" class="h-6 mr-3 sm:h-9" alt="E. Zarate Hospital Logo" />
+                    <span
+                        class="self-center my-auto text-gray-800 text-md font-semibold whitespace-nowrap dark:text-white">
+                        E. Zarate Hospital
+                    </span>
+                </a>
+                <a href="#more-info"
+                    class="self-center my-auto text-sky-800 text-md font-semibold whitespace-nowrap dark:text-white">
+                    How this works?
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <section class="flex">
+        <nav id="sideBar" class="hidden md:flex h-screen flex-col justify-center flex-shrink-0 w-0 sm:w-3/12">
+            <a href="#" class="flex items-center fixed top-14 left-3 lg:left-5 xl:left-10">
+                <img src="favicon.png" class="h-6 mr-3 sm:h-9" alt="E. Zarate Hospital Logo" />
+                <span
+                    class="self-center my-auto text-zinc-500 text-md lg:text-xl font-semibold whitespace-nowrap dark:text-white">
+                    E. Zarate Hospital
+                </span>
+            </a>
+            <div class="fixed top-1/3 flex flex-col border-l-2 border-zinc-400 h-max left-8 xl:left-16 pl-3 py-1">
+                <a href="#topSection"
+                    class="my-auto text-zinc-500 hover:text-sky-800 text-lg lg:text-xl font-semibold whitespace-nowrap dark:text-white">
+                    Verifier
+                </a>
+                <a href="#more-info"
+                    class="my-auto text-zinc-500 hover:text-sky-800 text-lg lg:text-xl font-semibold whitespace-nowrap dark:text-white">
+                    How this works?
+                </a>
+            </div>
+            <img src="images/triangles-top.svg" class="absolute top-0 right-8 h-20" />
+            <img src="images/triangles-left.svg" class="fixed bottom-12 left-0 w-24" />
+        </nav>
+        <main class="flex-grow" id="topSection">
+            <!-- Start block -->
+            <section id="verifierSection" class="pt-20 md:pt-10 flex flex-col justify-center" style="min-height: 90vh;">
+                <div class="grid max-w-screen-xl px-4 pb-8 mx-auto lg:gap-8 xl:gap-0  lg:grid-cols-12 pt-14">
+                    <div class="mr-auto place-self-center lg:col-span-7">
+                        <h1
+                            class="text-center lg:text-left max-w-2xl -mt-6 mb-4 text-4xl font-extrabold leading-none md:3xl lg:text-4xl xl:text-6xl dark:text-white text-zinc-800">
+                            Medical Certificate <span class="text-sky-900">Verifier</span> <br /> E. Zarate Hospital
+                        </h1>
+                        <p
+                            class="text-center lg:text-left max-w-2xl mb-6 font-normal text-gray-700 lg:mb-8  dark:text-gray-400 text-md xl:tex-lg">
+                            Let the medical certificate owner <span class="font-bold text-sky-950">Scan the QR
+                                code</span>
+                            through <a target="_blank"
+                                href="https://play.google.com/store/apps/details?id=com.azure.authenticator&hl=en_US&pli=1"
+                                class="font-semibold">Microsoft Authenticator App</a> to
+                            present the ownership of the medical
+                            certificate.
+                        </p>
+                        <div class="flex sm:space-x-4 mx-auto lg:mx-0 w-max ">
+                            <a target="_blank"
+                                href="https://play.google.com/store/apps/details?id=com.azure.authenticator&hl=en_US&pli=1"
+                                class="inline-flex items-center justify-center w-full px-2 lg:px-5 py-2 lg:py-3 text-xs lg:text-sm font-medium text-center text-gray-900 border border-gray-200 rounded-lg sm:w-auto hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800">
+                                <img class="h-4 lg:h-6 rounded mr-3" src="authenticator-icon.png"
+                                    alt="MS authenticator logo">
+                                <span>About Microsoft Authenticator App</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="lg:col-span-5 lg:flex flex-col mt-5 lg:mt-0">
+                        <div class="mx-auto w-max">
+                            <div id="qrcode" style="text-align: center"></div>
+                        </div>
+                        <div id="message-wrapper" class="my-4 w-full max-w-xs mx-auto">
+                            <div class="bg-sky-100 text-sm text-sky-950 p-2 rounded-md w-full text-center" id="message">
+                                Generating QR Code. Please wait...
+                            </div>
+                            <br />
+                            <div class="bg-sky-100 text-sm hidden text-sky-950 p-2 rounded-md w-full text-center"
+                                id="subject">
+                            </div>
+                            <br />
+                            <div class="bg-sky-100 text-sm hidden text-sky-950 p-2 rounded-md w-full text-center"
+                                id="payload">
+                            </div>
+                        </div>
+                        <!-- <img src="./images/hero.png" alt="hero image"> -->
+                    </div>
+                </div>
+            </section>
+            <!-- End block -->
+
+            <!-- Verified block -->
+            <section id="verifiedSection"
+                class="hidden flex-col-reverse md:flex-row pt-20 justify-center mx-auto md:space-x-4">
+                <div class="overflow-auto w-screen md:w-auto">
+                    <div id="medCertViewer"
+                        style="background-image: url('images/ezaratemedicalcertificate.jpg'); background-size: contain;background-position: center;background-repeat: no-repeat;width: 794px; height: 1128px; font-family: serif,Times; position: relative; margin-left: auto; margin-right: auto; z-index: 10; margin-top: -8rem">
+                        <h6 id="doctor_patientName"
+                            style="position: absolute;display:block; top: 363px; left: 163px; font-size: 17px; font-weight: 900">
+                        </h6>
+                        <h6 id="doctor_patientAge"
+                            style="position: absolute;display:block; top: 363px; left: 538px; font-size: 17px; font-weight: 900">
+                        </h6>
+                        <h6 id="certDate"
+                            style="position: absolute;display:block; top: 363px; left: 675px; font-size: 17px; font-weight: 900">
+                        </h6>
+                        <h6 id="doctor_patientOccupation"
+                            style="position: absolute;display:block; top: 394px; left: 137px; font-size: 17px; font-weight: 900">
+                        </h6>
+                        <h6 id="classification"
+                            style="position: absolute;display:block; top: 394px; left: 580px; font-size: 17px; font-weight: 900">
+                        </h6>
+                        <h6 id="doctor_patientAddress"
+                            style="position: absolute;display:block; top: 425px; left: 112px; font-size: 17px; font-weight: 900">
+                        </h6>
+                        <h6 id="inclusiveDateTreatment"
+                            style="position: absolute;display:block; top: 455px; left: 280px; font-size: 17px; font-weight: 900">
+                        </h6>
+                        <h6
+                            style="position: absolute;display:block; top: 484px; left: 43px; font-size: 17px; font-weight: 900; width: 710px;line-height: 28px ;">
+                            <span style="opacity: 0;">SUBJECTIVECOMPLA</span>
+                            <span id="subjectiveComplaints"></span>
+                        </h6>
+                        <h6
+                            style="position: absolute;display:block; top: 547px; left: 43px; font-size: 17px; font-weight: 900; width: 710px;line-height: 28px ;">
+                            <span style="opacity: 0;">PERTINENT PHYSICAL EXAMINATION F</span>
+                            <span id="physicalExaminationFindings"></span>
+                        </h6>
+                        <h6
+                            style="position: absolute;display:block; top: 609px; left: 43px; font-size: 17px; font-weight: 900; width: 710px;line-height: 28px ;">
+                            <span style="opacity: 0;">ANCLINARY EXAMINATION</span>
+                            <span id="ancillaryExaminationDone"></span>
+                        </h6>
+                        <h6
+                            style="position: absolute;display:block; top: 671px; left: 43px; font-size: 17px; font-weight: 900; width: 710px;line-height: 28px ;">
+                            <span style="opacity: 0;">CLINICAL DIAGNO</span>
+                            <span id="clinicalDiagnosis"></span>
+                        </h6>
+                        <h6
+                            style="position: absolute;display:block; top: 733px; left: 43px; font-size: 17px; font-weight: 900; width: 710px;line-height: 28px ;">
+                            <span style="opacity: 0;">TREATMENT DONE/MEDICATEDg</span>
+                            <span id="treatmentMedication"></span>
+                        </h6>
+                        <h6 id="disposition"
+                            style="position: absolute;display:block; top: 799px; left: 140px; font-size: 17px; font-weight: 900">
+                        </h6>
+                        <h6 id="attendingPhysician"
+                            style="position: absolute;display:block; top: 932px; right: 76px; font-size: 14px; font-weight: 900; width: 240px; text-align: center;">
+                        </h6>
+                        <h6 id="licNo"
+                            style="position: absolute;display:block; top: 977px; right: 189px; font-size: 14px; font-weight: 900;">
+                        </h6>
+                        <h6 id="ptrNo"
+                            style="position: absolute;display:block; top: 1008px; right: 189px; font-size: 14px; font-weight: 900;">
+                        </h6>
+                    </div>
+                </div>
+                <div class="h-max p-3">
+                    <span class="text-center md:text-left text-3xl md:text-4xl text-cent font-bold mb-4 block">The
+                        Document is
+                        <span class="text-emerald-700">Verified</span>
+                    </span>
+                    <div class="bg-sky-100 p-4 rounded-xl h-max flex space-x-4">
+                        <div class="flex flex-col text-xs md:text-lg">
+                            <span>Issued by:</span>
+                            <span>Issuer Domain:</span>
+                            <span>Blockchain Address:</span>
+                            <span>Document Hash:</span>
+                            <span>Signed Date:</span>
+                        </div>
+                        <div class="flex flex-col text-xs md:text-lg">
+                            <span id="issuedByText" class="font-bold text-sky-950">E. Zarate Hospital</span>
+                            <span id="issuerDomainText" class="font-bold text-sky-950"></span>
+                            <span id="blockchainAdressText" class="font-bold text-sky-950 max-w-xs truncate"></span>
+                            <span id="documentHashText" class="font-bold text-sky-950 max-w-xs truncate"></span>
+                            <span id="signedDateText" class="font-bold text-sky-950"></span>
+                        </div>
+                    </div>
+                    <div class="flex flex-row md:flex-col space-x-2 md:space-x-0 md:space-y-4 mt-3">
+                        <button id="downloadPDFButton"
+                            class="bg-sky-950 text-xs text-md text-white font-bold p-3 rounded-md w-full block mx-auto hover:bg-sky-900">
+                            Download a PDF Copy <br class="md:hidden" /> (Not Verifiable Copy)
+                        </button>
+                        <button id="verifyAnotherButton"
+                            class="bg-zinc-700 text-xs text-md text-white font-bold p-3 rounded-md w-full block mx-auto hover:bg-zinc-900">
+                            Verify Another
+                        </button>
+                    </div>
+                </div>
+
+            </section>
+            <!-- End block -->
+
+            <!-- Start block -->
+            <section class="bg-sky-50 dark:bg-gray-800 rounded-2xl">
+                <div class="max-w-screen-xl px-4 py-8 mx-auto space-y-12 lg:space-y-20 lg:py-24 lg:px-6">
+                    <!-- Row -->
+                    <div id="more-info" class="items-center gap-8 lg:grid lg:grid-cols-2 xl:gap-16">
+                        <div class="text-gray-500 sm:text-lg dark:text-gray-400">
+                            <h2 class="mb-4 text-3xl font-extrabold tracking-tight text-gray-900 dark:text-white">
+                                How E. Zarate Hospital Verifier works?
+                            </h2>
+                            <p class="mb-8 font-light lg:text-xl">
+                                E. Zarate Hospital Verifier is built on top of
+                                <a class="text-sky-950 font-normal" target="_blank"
+                                    href="https://www.microsoft.com/en-us/security/business/identity-access/microsoft-entra-verified-id">Microsoft
+                                    Entra Verified ID</a>
+                                which is a verifiable credentials solution that enables organizations to issue
+                                <a class="text-sky-950 font-normal"
+                                    href="https://learn.microsoft.com/en-us/entra/verified-id/decentralized-identifier-overview#what-are-verifiable-credentials"
+                                    target="_blank" rel="noopener noreferrer">Verifiable Credentials</a>
+                                to their users. These credentials can be used to prove identity claims. The solution
+                                is built on
+                                <a class="text-sky-950 font-normal"
+                                    href="https://learn.microsoft.com/en-us/entra/verified-id/decentralized-identifier-overview#lead-with-open-standards"
+                                    target="_blank" rel="noopener noreferrer">Open Standards</a>
+                                and is interoperable with other verifiable credential solutions.
+                            </p>
+                            <!-- List -->
+                            <ul role="list" class="pt-8 space-y-5 border-t border-gray-200 my-7 dark:border-gray-700">
+                                <span class="text-zinc-700 font-bold">3 Easy Steps</span>
+                                <li class="flex space-x-3">
+                                    <div
+                                        class=" bg-sky-900 rounded-full flex-shrink-0 text-white font-bold text-sm p-2 h-7 w-7 flex">
+                                        <span class="block mx-auto -mt-1">1</span>
+                                    </div>
+                                    <span
+                                        class="my-auto text-md font-medium leading-tight text-gray-900 dark:text-white">
+                                        Verifier should visit the Verifier Page to Generate QR Code
+                                    </span>
+                                </li>
+
+                                <li class="flex space-x-3">
+                                    <div
+                                        class=" bg-sky-900 rounded-full flex-shrink-0 text-white font-bold text-sm p-2 h-7 w-7 flex">
+                                        <span class="block mx-auto -mt-1">2</span>
+                                    </div>
+                                    <span
+                                        class="my-auto text-md font-medium leading-tight text-gray-900 dark:text-white">
+                                        Medical Certificate Holder will then scan the QR Code through Microsoft
+                                        Authenticator
+                                        App
+                                    </span>
+                                </li>
+
+                                <li class="flex space-x-3">
+                                    <div
+                                        class=" bg-sky-900 rounded-full flex-shrink-0 text-white font-bold text-sm p-2 h-7 w-7 flex">
+                                        <span class="block mx-auto -mt-1">3</span>
+                                    </div>
+                                    <span
+                                        class="my-auto text-md font-medium leading-tight text-gray-900 dark:text-white">
+                                        Verifier will then able to view the Medical Certificate Holder's information
+                                    </span>
+                                </li>
+
+                            </ul>
+                        </div>
+                        <img class="hidden w-full mb-4 rounded-lg lg:mb-0 lg:flex" src="images/how-it-works-image.png"
+                            alt="how it works image">
+                    </div>
+                </div>
+            </section>
+            <!-- End block -->
+
+            <footer class="hidden bg-white dark:bg-gray-800">
+                <div class="max-w-screen-xl p-4 py-6 mx-auto lg:py-16 md:p-8 lg:p-10">
+                    <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8">
+                    <div class="text-center">
+                        <!-- <a href="#"
+                            class="flex items-center justify-center mb-5 text-2xl font-semibold text-gray-900 dark:text-white">
+                            <img src="./images/logo.svg" class="h-6 mr-3 sm:h-9" alt="Landwind Logo" />
+                            Landwind
+                        </a> -->
+                        <span class="block text-sm text-center text-gray-500 dark:text-gray-400">© 2021-2022 Landwind™.
+                            All
+                            Rights Reserved. Built with <a href="https://flowbite.com"
+                                class="text-sky-600 hover:underline dark:text-sky-500">Flowbite</a> and <a
+                                href="https://tailwindcss.com"
+                                class="text-sky-600 hover:underline dark:text-sky-500">Tailwind
+                                CSS</a>. Distributed by <a href="https://themewagon.com/"
+                                class="text-sky-600 hover:underline dark:text-sky-500">ThemeWagon</a>
+                        </span>
+                        <ul class="flex justify-center mt-5 space-x-5">
+                            <li>
+                                <a href="#"
+                                    class="text-gray-500 hover:text-gray-900 dark:hover:text-white dark:text-gray-400">
+                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                        <path fill-rule="evenodd"
+                                            d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                    class="text-gray-500 hover:text-gray-900 dark:hover:text-white dark:text-gray-400">
+                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                        <path fill-rule="evenodd"
+                                            d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                    class="text-gray-500 hover:text-gray-900 dark:hover:text-white dark:text-gray-400">
+                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                        <path
+                                            d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
+                                    </svg>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                    class="text-gray-500 hover:text-gray-900 dark:hover:text-white dark:text-gray-400">
+                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                        <path fill-rule="evenodd"
+                                            d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                    class="text-gray-500 hover:text-gray-900 dark:hover:text-white dark:text-gray-400">
+                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                        <path fill-rule="evenodd"
+                                            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10c5.51 0 10-4.48 10-10S17.51 2 12 2zm6.605 4.61a8.502 8.502 0 011.93 5.314c-.281-.054-3.101-.629-5.943-.271-.065-.141-.12-.293-.184-.445a25.416 25.416 0 00-.564-1.236c3.145-1.28 4.577-3.124 4.761-3.362zM12 3.475c2.17 0 4.154.813 5.662 2.148-.152.216-1.443 1.941-4.48 3.08-1.399-2.57-2.95-4.675-3.189-5A8.687 8.687 0 0112 3.475zm-3.633.803a53.896 53.896 0 013.167 4.935c-3.992 1.063-7.517 1.04-7.896 1.04a8.581 8.581 0 014.729-5.975zM3.453 12.01v-.26c.37.01 4.512.065 8.775-1.215.25.477.477.965.694 1.453-.109.033-.228.065-.336.098-4.404 1.42-6.747 5.303-6.942 5.629a8.522 8.522 0 01-2.19-5.705zM12 20.547a8.482 8.482 0 01-5.239-1.8c.152-.315 1.888-3.656 6.703-5.337.022-.01.033-.01.054-.022a35.318 35.318 0 011.823 6.475 8.4 8.4 0 01-3.341.684zm4.761-1.465c-.086-.52-.542-3.015-1.659-6.084 2.679-.423 5.022.271 5.314.369a8.468 8.468 0 01-3.655 5.715z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </footer>
+        </main>
+    </section>
+
+    <script src="qrcode.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.2/axios.min.js"
+        integrity="sha512-b94Z6431JyXY14iSXwgzeZurHHRNkLt9d6bAHt7BZT38eqV+GyngIi/tVye4jBKPYQ2lBdRs0glww4fmpuLRwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js" type="application/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/crypto-js.min.js"
+        integrity="sha512-a+SUDuwNzXDvz4XrIcXHuCf089/iJAoN4lmrXJg18XnduKK6YlDHNRalv4yd1N40OKI80tFidF+rqTFKGPoWFQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script defer>
+        document.addEventListener("DOMContentLoaded", function () {
+            window.jsPDF = window.jspdf.jsPDF;
+            const doc = new jsPDF();
+            document.getElementById("downloadPDFButton").addEventListener("click", function () {
+                var source = window.document.getElementById("medCertViewer");
+
+                source.style.height = "1148px";
+
+                // Use html2canvas to capture the content as an image
+                html2canvas(source).then(function (canvas) {
+                    // A4 dimensions in points (1 inch = 25.4 mm = 72 points)
+                    var a4WidthPoints = (794 * 0.75) * 25.4 / 72;
+                    var a4HeightPoints = (1126 * 0.75) * 25.4 / 72;
+
+                    // Calculate the scaling factor for the width and height
+                    var scaleWidth = a4WidthPoints / canvas.width;
+                    var scaleHeight = a4HeightPoints / canvas.height;
+
+                    // Choose the minimum scaling factor to fit both width and height
+                    var scale = Math.min(scaleWidth, scaleHeight);
+
+                    // Calculate the dimensions after scaling
+                    var imageWidth = canvas.width * scale;
+                    var imageHeight = canvas.height * scale;
+
+                    // Add the image to the PDF
+                    doc.addImage(canvas.toDataURL("image/png"), "PNG", 0, 0, imageWidth, imageHeight);
+
+                    // Save or open the PDF
+                    doc.save(window.patientName + ".pdf");
+                });
+            });
+
+            // const key = "VzgTdG#Ek9TYB^&(1QQbJGZ2j0#XgUx)";
+            // const blockchainAddress = "0xbbdd6d0d8ea1a3e595e707719c04a311c33cb7f57e7b8f2fcb3106eb22a50ef8";
+            // const decryptedData = decryptString(blockchainAddress, key);
+
+        });
+
+
+        async function decryptString(blockchainAddress, key) {
+            const encryptedData = await getTransactionData(blockchainAddress);
+            const data = atob(encryptedData);
+            const uint8Array = new Uint8Array(data.length);
+
+            for (let i = 0; i < data.length; i++) {
+                uint8Array[i] = data.charCodeAt(i);
+            }
+
+            const iv = uint8Array.slice(0, 16);
+            const encrypted = uint8Array.slice(16);
+
+            const keyBuffer = await crypto.subtle.importKey('raw', new TextEncoder().encode(key), 'AES-CBC', false, ['decrypt']);
+            const decryptedArrayBuffer = await crypto.subtle.decrypt({ name: 'AES-CBC', iv }, keyBuffer, encrypted);
+
+            const decryptedText = new TextDecoder().decode(decryptedArrayBuffer);
+            // console.log("Decrypted Data:", decryptedText);
+
+            const formData = new URLSearchParams(decryptedText);
+            const formDataObject = Object.fromEntries(formData.entries());
+            console.log(formDataObject);
+            // loop though the object and display the key and value pairs
+            for (const [key, value] of Object.entries(formDataObject)) {
+                console.log(`${key}`);
+                if (document.getElementById(key) != null)
+                    document.getElementById(key).innerText = value;
+                // document.getElementById(key).innerText = value;
+            }
+
+            let patientName = formDataObject.doctor_patientName || "Medical Certificate";
+            // convert to snake case
+            patientName = patientName.replace(" ", "_").toLowerCase();
+            window.patientName = patientName;
+
+            return decryptedText;
+        }
+
+
+
+        async function getTransactionData(blockchainAddress) {
+            const provider = new ethers.providers.JsonRpcProvider('https://sepolia.infura.io/v3/faacc84956744c998c0b1aa7e997b315');
+
+            try {
+                // Get transactions related to the blockchain address
+                const transaction = await provider.getTransaction(blockchainAddress);
+                const data = transaction.data;
+                const utf8Data = hexToUtf8(data);
+                const cleanedUtf8Data = removeNonPrintableCharacters(utf8Data).split("||")[1];
+
+                console.log('Transaction Data (UTF-8):', cleanedUtf8Data);
+                return cleanedUtf8Data;
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        }
+
+        // Function to convert hex to UTF-8
+        function hexToUtf8(hex) {
+            const bytes = ethers.utils.arrayify(hex);
+            const textDecoder = new TextDecoder('utf-8');
+            return textDecoder.decode(bytes);
+        }
+
+        // Function to remove non-printable characters
+        function removeNonPrintableCharacters(input) {
+            // Replace or remove any non-printable characters based on your requirements
+            return input.replace(/[^\x20-\x7E]/g, '');
+        }
+
+
+    </script>
+
+    <script>
+        var display = document.getElementById('display');
+        var qrcode = new QRCode("qrcode");
+        var respPresentationReq = null;
+
+        document.getElementById("verifyAnotherButton").addEventListener("click", function () {
+            window.location.reload();
+        });
+        function pollRequestStatus(requestId, frequencyMs) {
+            console.log("pollRequestStatus");
+            var checkStatus = setInterval(function () {
+                fetch('api/verifier/presentation-response?id=' + requestId)
+                    .then(response => response.text())
+                    .catch(error => () => {
+                        document.getElementById("message").innerHTML = error
+                        console.log(error.message);
+                    })
+                    .then(response => {
+                        if (response.length > 0) {
+                            respMsg = JSON.parse(response);
+                            if (respMsg.status == 'request_created') {
+                                document.getElementById('message').innerHTML = "Scan the QR code through Microsoft Authenticator App";
+                            }
+                            if (respMsg.status == 'request_retrieved') {
+                                document.getElementById('message-wrapper').style.display = "block";
+                                document.getElementById("qrcode").getElementsByTagName("img")[0].style.opacity = "0.1";
+                                document.getElementById('message').innerHTML = respMsg.message;
+                            }
+                            if (respMsg.status == 'presentation_verified') {
+                                document.getElementById('qrcode').style.display = "none";
+                                clearInterval(checkStatus);
+                                document.getElementById('message').innerHTML = "Verification successful.";
+                                console.log(respMsg);
+                                document.getElementById("issuedByText").innerText = respMsg.payload[0].issuer;
+                                const blockchainAddress = respMsg.payload[0].claims.blockchainAddress;
+                                const documentHash = respMsg.payload[0].claims.documentHash;
+                                decryptString(blockchainAddress, documentHash);
+                                document.getElementById("issuerDomainText").innerText = "https://" + respMsg.payload[0].issuer.split(":")[2];
+                                document.getElementById("blockchainAdressText").innerText = blockchainAddress;
+                                document.getElementById("documentHashText").innerText = documentHash;
+                                document.getElementById("signedDateText").innerText = new Date(respMsg.payload[0].issuanceDate)
+                                    .toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+                                document.getElementById("verifierSection").style.display = "none";
+                                document.getElementById("verifiedSection").style.display = "flex";
+                                document.getElementById("sideBar").style.display = "none";
+                                console.log(requestId);
+                                // window.location = "presentation-verified.html?id=" + requestId
+                                const decryptedData = decryptString(blockchainAddress, documentHash);
+                            }
+                            if (respMsg.status == 'issuance_failed') {
+                                document.getElementById('qrcode').style.display = "none";
+                                document.getElementById('message').innerHTML = "Verification error occurred.";
+                                document.getElementById('payload').innerHTML = "Payload: " + JSON.stringify(respMsg.payload);
+                                document.getElementById('message').style.textColor = "red";
+                                clearInterval(checkStatus);
+                            }
+                        }
+                    })
+            }, frequencyMs);
+        }
+
+        fetch('api/verifier/presentation-request')
+            .then(function (response) {
+                response.text()
+                    .catch(error => document.getElementById("message").innerHTML = error)
+                    .then(function (message) {
+                        respPresentationReq = JSON.parse(message);
+                        if (respPresentationReq.error_description) {
+                            console.error(respPresentationReq.error_description);
+                            document.getElementById("message").innerHTML = respPresentationReq.error_description;
+                            document.getElementById('message-wrapper').style.display = "block";
+                            respPresReq = null;
+                        } else {
+                            qrcode.makeCode(respPresentationReq.url);
+                            document.getElementById('message').innerHTML = "Scan the QR code through Microsoft Authenticator App";
+                            pollRequestStatus(respPresentationReq.id, 3000)
+                        }
+                    }).catch(error => { console.log(error.message); })
+            }).catch(error => { console.log(error.message); })
+
+        fetch('api/verifier/get-presentation-details')
+            .then(function (response) {
+                response.text()
+                    .catch(error => displayMessage(error))
+                    .then(function (message) {
+                        details = JSON.parse(message);
+
+                        // document.getElementById('idTitle').innerHTML = "Presentation of credential type: " + details.type;
+                        // document.getElementById('idSubTitle').innerHTML = details.purpose;
+                        // document.getElementById('idSub3Title').innerHTML = acceptedIssuers;
+                    }).catch(error => { console.log(error.message); })
+            }).catch(error => { console.log(error.message); })
+
+        function parseParms(str) {
+            var pieces = str.split("&"), data = {}, i, parts;
+            for (i = 0; i < pieces.length; i++) {
+                parts = pieces[i].split("=");
+                if (parts.length < 2) {
+                    parts.push("");
+                }
+                data[decodeURIComponent(parts[0])] = decodeURIComponent(parts[1]);
+            }
+            return data;
+        }
+
+    </script>
+</body>
+
+
+</html>

@@ -1,0 +1,35 @@
+{
+    "locale": "en-US",
+    "card": {
+        "backgroundColor": "#5c5c5e",
+        "description": "Go to ezaratehospital.tech to verify and present your Medical Certificate",
+        "issuedBy": "E. Zarate Hospital",
+        "textColor": "#fff",
+        "title": "Medical Certificate Verification ID",
+        "logo": {
+            "description": "E. Zarate Hospital Logo",
+            "uri": "https://ezaratehospital.tech/logo.png"
+        }
+    },
+    "consent": {
+        "instructions": "Confirm OTP in your registered mobile number",
+        "title": "Do you want to get your Medical Certificate Verification ID?"
+    },
+    "claims": [
+        {
+            "claim": "vc.credentialSubject.recipientName",
+            "label": "Recipient Name",
+            "type": "String"
+        },
+        {
+            "claim": "vc.credentialSubject.blockchainAddress",
+            "label": "Blockchain Address",
+            "type": "String"
+        },
+        {
+            "claim": "vc.credentialSubject.documentHash",
+            "label": "Document Hash",
+            "type": "String"
+        }
+    ]
+}

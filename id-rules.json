@@ -1,0 +1,35 @@
+{
+    "attestations": {
+        "idTokenHints": [
+            {
+                "mapping": [
+                    {
+                        "outputClaim": "blockchainAddress",
+                        "required": true,
+                        "inputClaim": "$.blockchain_address",
+                        "indexed": false
+                    },
+                    {
+                        "outputClaim": "documentHash",
+                        "required": true,
+                        "inputClaim": "$.document_hash",
+                        "indexed": false
+                    },
+                    {
+                        "outputClaim": "recipientName",
+                        "required": true,
+                        "inputClaim": "$.recipientName",
+                        "indexed": false
+                    }
+                ],
+                "required": false
+            }
+        ]
+    },
+    "validityInterval": 3153600000,
+    "vc": {
+        "type": [
+            "VerifiedCredentialExpert"
+        ]
+    }
+}
