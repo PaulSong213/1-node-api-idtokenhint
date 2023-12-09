@@ -147,7 +147,7 @@ var parser = bodyParser.urlencoded({ extended: false });
 
 // Serve static files out of the /public directory
 app.use(express.static('public'))
-
+app.use('/.well-known', express.static('.well-known'));
 // Set up a simple server side session store.
 // The session store will briefly cache issuance requests
 // to facilitate QR code scanning.
