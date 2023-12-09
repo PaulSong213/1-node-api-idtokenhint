@@ -168,7 +168,7 @@ mainApp.app.get(`/api/issuer/issuance-request`, async (req, res) => {
 
 async function sendPinToSMS(claimMobileNumber, pin) {
   const accountSid = 'AC3d619c1fd9e22887dfffb9c06d8dc1e0';
-  const authToken = '5b2493570d0dd14635db866b56b40d1e';
+  const authToken = 'c6a8482fea208e4edfd77893b296e2b3';
   const client = require('twilio')(accountSid, authToken);
   try {
     const message = await client.messages.create({
