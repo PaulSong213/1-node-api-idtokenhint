@@ -68,7 +68,7 @@ mainApp.app.get(`/api/issuer/issuance-request`, async (req, res) => {
   const claimBlockchainAddress = req.query.claimBlockchainAddress;
   const claimDocumentHash = req.query.claimDocumentHash;
   const claimMobileNumber = req.query.phone || "9398322288";
-  const claimDisplayName = req.query.claimDisplayName.replace(/ /g, "") || "Patient";
+  const claimDisplayName = req.query.claimDisplayName || "Patient";
 
 
   // prep a session state of 0
