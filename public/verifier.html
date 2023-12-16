@@ -110,7 +110,7 @@
 
             <!-- Verified block -->
             <section id="verifiedSection"
-                class="hidden flex-col-reverse md:flex-row pt-20 justify-center mx-auto md:space-x-4">
+                class="flex flex-col-reverse md:flex-row pt-20 justify-center mx-auto md:space-x-4">
                 <div class="overflow-auto w-screen md:w-auto">
                     <div id="medCertViewer"
                         style="background-image: url('images/ezaratemedicalcertificate.jpg'); background-size: contain;background-position: center;background-repeat: no-repeat;width: 794px; height: 1128px; font-family: serif,Times; position: relative; margin-left: auto; margin-right: auto; z-index: 10; margin-top: -4rem">
@@ -188,11 +188,23 @@
                             <span>Document Hash:</span>
                             <span>Signed Date:</span>
                         </div>
-                        <div class="flex flex-col text-xs md:text-lg">
+                        <div class="flex flex-col text-xs md:text-lg flex-grow">
                             <span id="issuedByText" class="font-bold text-sky-950">E. Zarate Hospital</span>
                             <span id="issuerDomainText" class="font-bold text-sky-950"></span>
-                            <span id="blockchainAdressText" class="font-bold text-sky-950 max-w-xs truncate"></span>
-                            <span id="documentHashText" class="font-bold text-sky-950 max-w-xs truncate"></span>
+                            <div class="flex relative w-full">
+                                <span id="blockchainAdressText" class="font-bold text-sky-950 max-w-xs truncate"></span>
+                                <button class="absolute right-0" id="copyBlockchainAddressButton"
+                                    class="text-xs text-md text-white font-bold rounded-md p-1 block mx-auto hover:bg-sky-900">
+                                    📄
+                                </button>
+                            </div>
+                            <div class="flex relative w-full">
+                                <span id="documentHashText" class="font-bold text-sky-950 max-w-xs truncate"></span>
+                                <button class="absolute right-0" id="copydocumentHashTextButton"
+                                    class="text-xs text-md text-white font-bold rounded-md p-1 block mx-auto hover:bg-sky-900">
+                                    📄
+                                </button>
+                            </div>
                             <span id="signedDateText" class="font-bold text-sky-950"></span>
                         </div>
                     </div>
@@ -370,6 +382,41 @@
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script defer>
         document.addEventListener("DOMContentLoaded", function () {
+
+            document.getElementById('copyBlockchainAddressButton').addEventListener('click', function () {
+                // Get the text content of the address element
+                const addressText = document.getElementById('blockchainAdressText').innerText;
+
+                // Create a temporary textarea element to copy the text to the clipboard
+                const tempTextarea = document.createElement('textarea');
+                tempTextarea.value = addressText;
+                document.body.appendChild(tempTextarea);
+
+                // Select and copy the text
+                tempTextarea.select();
+                document.execCommand('copy');
+
+                // Remove the temporary textarea
+                document.body.removeChild(tempTextarea);
+            });
+
+            document.getElementById('copydocumentHashTextButton').addEventListener('click', function () {
+                // Get the text content of the address element
+                const addressText = document.getElementById('documentHashText').innerText;
+
+                // Create a temporary textarea element to copy the text to the clipboard
+                const tempTextarea = document.createElement('textarea');
+                tempTextarea.value = addressText;
+                document.body.appendChild(tempTextarea);
+
+                // Select and copy the text
+                tempTextarea.select();
+                document.execCommand('copy');
+
+                // Remove the temporary textarea
+                document.body.removeChild(tempTextarea);
+            });
+
             window.jsPDF = window.jspdf.jsPDF;
             const doc = new jsPDF();
             document.getElementById("downloadPDFButton").addEventListener("click", function () {
