@@ -179,7 +179,7 @@
 
                     <!-- ULTRASOUND -->
                     <div class="bg-white mx-auto" id="result-form-ultrasound-container-parent">
-                        <div id="result-form-container" class="modal-body border p-4 m-4 shadow mx-auto"
+                        <div id="result-form-container" class="d-none modal-body border p-4 m-4 shadow mx-auto"
                             style="overflow-x: auto; width: max-content; max-width: 100%">
                             <div class="px-1" id="result-form" style="width: 600px;">
                                 <!-- HEADER -->
@@ -285,7 +285,7 @@
 
                                 <div class="col-12 mt-3">
                                     <h8 class="mb-4">Results for:</h8>
-                                    <span id="serviceType" class="fw-bold d-block mb-4"></span>
+                                    <span id="serviceTypeUltrasound" class="fw-bold d-block mb-4"></span>
                                 </div>
 
                                 <!-- Lab Result Container -->
@@ -342,7 +342,7 @@
 
                     <!-- XRAY -->
                     <div class="bg-white mx-auto" id="result-form-xray-container-parent">
-                        <div id="result-form-xray-container" class="modal-body border p-4 m-4 shadow mx-auto"
+                        <div id="result-form-xray-container" class=" d-none modal-body border p-4 m-4 shadow mx-auto"
                             style="overflow-x: auto; width: max-content; max-width: 100%">
                             <div class="px-1" id="result-form" style="width: 600px;">
                                 <!-- HEADER -->
@@ -448,7 +448,7 @@
 
                                 <div class="col-12 mt-3">
                                     <h8 class="mb-4">Results for:</h8>
-                                    <span id="serviceType" class="fw-bold d-block mb-4"></span>
+                                    <span id="serviceTypeXray" class="fw-bold d-block mb-4"></span>
                                 </div>
 
                                 <!-- Lab Result Container -->
@@ -609,7 +609,7 @@
 
                                 <div class="col-12 mt-3">
                                     <h8 class="mb-4">Results for:</h8>
-                                    <span id="serviceType" class="fw-bold d-block mb-4"></span>
+                                    <span class="fw-bold d-block mb-4 serviceType"></span>
                                 </div>
 
                                 <!-- Lab Result Container -->
@@ -755,11 +755,11 @@
                             <span id="signedDateText" class="font-bold text-sky-950"></span>
                         </div>
                     </div>
-                    <div class="flex flex-row md:flex-col space-x-2 md:space-x-0 md:space-y-4 mt-3">
-                        <!-- <button id="downloadPDFButton"
-                            class="bg-sky-950 text-xs text-md text-white font-bold p-3 rounded-md w-full block mx-auto hover:bg-sky-900">
+                    <div class="flex flex-col md:flex-col space-x-2 md:space-x-0 md:space-y-4 mt-3">
+                        <button id="downloadPDFButton"
+                            class="bg-sky-950 text-xs text-md text-white font-bold p-3 rounded-md w-full block mx-auto hover:bg-sky-900 invisible">
                             Download a PDF Copy <br class="md:hidden" /> (Not Verifiable Copy)
-                        </button> -->
+                        </button>
                         <button id="verifyAnotherButton"
                             class="bg-zinc-700 text-xs text-md text-white font-bold p-3 rounded-md w-full block mx-auto hover:bg-zinc-900">
                             Verify Another
@@ -1046,8 +1046,8 @@
 
             // document.getElementById('qrcode').style.display = "none";
             // document.getElementById('message').innerHTML = "Verification successful.";
-            // const blockchainAddress = "0x45e65d1a6722a36854b6fb649a81a493bc87597ee8c9de5160c43225350da4f8";
-            // const documentHash = "ZWItplOdwf03KJQrjqAmRJgps5Zu7pKo";
+            // const blockchainAddress = "0xdb64d36ad31f8524a4d8e2cc2b2415df043a406f3003392cf3748bc12bece7e5";
+            // const documentHash = "fyLfVHAOuOeytPllvDjm5XJMr5EsBYY5";
             // decryptString(blockchainAddress, documentHash);
 
             // document.getElementById("blockchainAdressText").innerText = blockchainAddress;
@@ -1136,7 +1136,7 @@
                 newResultFormContainer.attr("id", `result-form-lab-container-${i}`);
                 $("#result-form-lab-container-parent").append(newResultFormContainer);
                 newResultFormContainer.removeClass("d-none");
-                newResultFormContainer.find("#serviceType").text(type);
+                newResultFormContainer.find(".serviceType").text(type);
                 for (const resultType in resultInfo) {
                     // console.log(resultType + "_result");
                     const currentResult = resultInfo[resultType];
@@ -1169,6 +1169,7 @@
         }
 
         function showResultXrayForm(result) {
+            if (!result) return;
             console.log(result);
 
             // RESULT INFO
@@ -1177,10 +1178,11 @@
             const ServiceType = result.ServiceType;
             console.log(result);
             const resultFormContainerTemplate = $("#result-form-xray-container");
+            resultFormContainerTemplate.removeClass("d-none");
             var serviceType = ServiceType.toString();
             var modifiedServiceType = serviceType.substring(1);
 
-            $("#serviceType").text(modifiedServiceType);
+            $("#serviceTypeXray").text(modifiedServiceType);
             $(".resultFormNo").text(`${result.resultID}`);
 
             // images
@@ -1242,6 +1244,7 @@
         }
 
         function showResultUltrasoundForm(result) {
+            if (!result) return;
             console.log(result);
 
             // RESULT INFO
@@ -1250,10 +1253,11 @@
             const ServiceType = result.ServiceType;
             console.log(result);
             const resultFormContainerTemplate = $("#result-form-container");
+            resultFormContainerTemplate.removeClass("d-none");
             var serviceType = ServiceType.toString();
             var modifiedServiceType = serviceType.substring(1);
 
-            $("#serviceType").text(modifiedServiceType);
+            $("#serviceTypeUltrasound").text(modifiedServiceType);
             $(".resultFormNo").text(`${result.resultID}`);
 
             // images
